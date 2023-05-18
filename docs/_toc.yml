@@ -5,4 +5,4 @@ parts:
   - caption: Langgit
     numbered: False
     chapters:
-      - file: notebooks/langgit.ipynb
+      - file: notebooks/langit.ipynb
