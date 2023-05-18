@@ -93,3 +93,6 @@ _build/
 
 #venv
 notebooks/venv/
+
+#other
+notebooks/faiss_index
