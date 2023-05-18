@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "datalab"
 dynamic = ["version"]
-description = "An Python exampe package from the World Bank Data Lab"
+description = "Tool for using LLMs and GPT APIs to query Jupyter Books rendered with GitHub pages"
 readme = {file = "README.md", content-type = "text/markdown"}
 license = {file = "LICENSE"}
 keywords = ["world bank", "template", "reproducible research"]
@@ -13,7 +13,7 @@ authors = [
   {name="World Bank Development Data Group", email="datalab@worldbank.org"},
 ]
 maintainers = [
-  {name="Gabriel Stefanini Vicente", email="gvicente@worldbank.org"},
+  {name="Holly Krambeck", email="hkrambeck@worldbank.org"},
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -36,9 +36,9 @@ dependencies = [
 notebook = ["notebook>=6.5.2"]
 
 [project.urls]
-"Homepage" = "https://github.com/worldbank/template"
+"Homepage" = "https://holly-transport.github.io/langgit/"
 "Bug Reports" = "https://github.com/worldbank/template/issues"
-"Source" = "https://github.com/worldbank/template"
+"Source" = "https://github.com/Holly-Transport/langgit"
 
 [tool.setuptools.dynamic]
 version = {attr = "datalab.__version__"}
