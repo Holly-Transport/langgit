@@ -495,8 +495,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-8-test-embeddings-and-set-up-and-test-retreiver">
-   Step 8: Test Embeddings and Set Up and Test Retreiver
+  <a class="reference internal nav-link" href="#step-8-set-up-and-test-retreiver">
+   Step 8: Set Up and Test Retreiver
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -661,14 +661,14 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-8-test-embeddings-and-set-up-and-test-retreiver">
-<h2>Step 8: Test Embeddings and Set Up and Test Retreiver<a class="headerlink" href="#step-8-test-embeddings-and-set-up-and-test-retreiver" title="Permalink to this heading">#</a></h2>
-<p>The Retreiver will search the vector store to idenitfy those vectors that have the most relevant information based on the user query. Only these vectors will be retreived and sent to the ChatGPT API for processing. The code below includes a couple tests that are recommended the first time you run this notebook.</p>
+<section id="step-8-set-up-and-test-retreiver">
+<h2>Step 8: Set Up and Test Retreiver<a class="headerlink" href="#step-8-set-up-and-test-retreiver" title="Permalink to this heading">#</a></h2>
+<p>The Retreiver will search the vector store to idenitfy those vectors that have the most relevant information based on the user query. Only these vectors will be retreived and sent to the ChatGPT API for processing. The code below includes a couple tests that are recommended the first time you run this notebook, to make sure the embeddings (vector process) and retreiver work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TEST EMBEDDINGS ##</span>
 
-<span class="c1"># query = &quot;What is GDP of Kenya in 2023?&quot;</span>
+<span class="c1"># query = &quot;Which governorate experienced the most tree cover loss?&quot;</span>
 <span class="c1"># docs = new_db.similarity_search(query)</span>
 <span class="c1"># print(docs)</span>
 
@@ -683,7 +683,7 @@ title="Print to PDF"
 </section>
 <section id="step-9-set-up-query-chain">
 <h2>Step 9: Set Up Query Chain<a class="headerlink" href="#step-9-set-up-query-chain" title="Permalink to this heading">#</a></h2>
-<p>Now, using Langchain RetrievalQAWithSourcesChain, ChatOpenAI (it’s good!), and your Retreiver, we are ready to go! The following code takes a query, finds the relevant data in your vector store, and then sends that data as part of a prompt to the ChatGPT API.</p>
+<p>Now, using Langchain RetrievalQAWithSourcesChain, ChatOpenAI (it’s good!), and your Retreiver, we are ready to go! The following code takes a query, finds the relevant data in your vector store, and then sends that data as part of a prompt to the ChatGPT API. If you find too much information is being sent through (exceeding the OpenAI token limits), you may consider increasing the similarity score threshold used by the retreiver.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## SET UP QUERY CHAIN. FIRST RETREIVE VECTORS FROM DATABASE. THEN SEND TO OPENAI FOR GENERATING RESPONSE ##</span>
@@ -835,8 +835,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-8-test-embeddings-and-set-up-and-test-retreiver">
-   Step 8: Test Embeddings and Set Up and Test Retreiver
+  <a class="reference internal nav-link" href="#step-8-set-up-and-test-retreiver">
+   Step 8: Set Up and Test Retreiver
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
