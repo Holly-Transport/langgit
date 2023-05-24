@@ -465,8 +465,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-select-a-wb-data-lab-data-good-url">
-   Step 2: Select a WB Data Lab Data Good URL
+  <a class="reference internal nav-link" href="#step-2-select-a-world-bank-data-lab-data-good-url">
+   Step 2: Select a World Bank Data Lab Data Good URL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -475,23 +475,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-using-a-langchain-url-loader-read-in-contents-from-all-listed-urls">
-   Step 4: Using a Langchain URL Loader, Read in Contents from All Listed URLs
+  <a class="reference internal nav-link" href="#step-4-read-in-contents-from-all-listed-urls">
+   Step 4: Read in Contents from All Listed URLs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-use-a-langchain-text-splitter-charactertextsplitter-to-break-contents-into-chunks">
-   Step 5: Use a Langchain Text Splitter (CharacterTextSplitter) to Break Contents into “Chunks”
+  <a class="reference internal nav-link" href="#step-5-break-contents-into-chunks">
+   Step 5:Break Contents into “Chunks”
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-6-use-openai-embeddings-and-faiss-vectorstore-tool-to-um-vectorize-the-data-to-make-search-more-efficient">
-   Step 6: Use OpenAI Embeddings and FAISS Vectorstore Tool to, um, Vectorize the Data to Make Search More Efficient
+  <a class="reference internal nav-link" href="#step-6-vectorize-the-data">
+   Step 6: Vectorize the Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-7-save-vectore-store-so-you-can-go-back-to-it-later">
-   Step 7: Save Vectore Store, So You Can Go Back to it Later
+  <a class="reference internal nav-link" href="#step-7-save-vector-store">
+   Step 7: Save Vector Store
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -500,18 +500,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-9-set-up-query-chain-using-langchain-retrievalqawithsourceschain-chatopenai-it-s-good-and-your-retreiver">
-   Step 9: Set Up Query Chain using Langchain RetrievalQAWithSourcesChain, ChatOpenAI (it’s good!), and Your Retreiver
+  <a class="reference internal nav-link" href="#step-9-set-up-query-chain">
+   Step 9: Set Up Query Chain
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-10-big-time-ask-your-data-good-a-question">
-   Step 10: Big Time! Ask Your Data Good a Question!
+  <a class="reference internal nav-link" href="#step-10-big-time-ask-your-content-a-question">
+   Step 10: Big Time! Ask Your Content a Question!
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-11-run-a-query-and-make-the-response-pretty">
    Step 11: Run a Query and Make the Response Pretty
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-notes">
+   Final Notes
   </a>
  </li>
 </ul>
@@ -567,8 +572,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-2-select-a-wb-data-lab-data-good-url">
-<h2>Step 2: Select a WB Data Lab Data Good URL<a class="headerlink" href="#step-2-select-a-wb-data-lab-data-good-url" title="Permalink to this heading">#</a></h2>
+<section id="step-2-select-a-world-bank-data-lab-data-good-url">
+<h2>Step 2: Select a World Bank Data Lab Data Good URL<a class="headerlink" href="#step-2-select-a-world-bank-data-lab-data-good-url" title="Permalink to this heading">#</a></h2>
+<p>This notebook has been designed to support searching Data Goods produced by the WB Data Lab, but it should work with other urls, too. Note that this notebook hasn’t been optimized in any way, so more complex websites may require additional effort.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://datapartnership.org/syria-economic-monitor/README.html&quot;</span>
@@ -579,6 +585,7 @@ title="Print to PDF"
 </section>
 <section id="step-3-using-beautiful-soup-generate-a-list-of-sub-urls">
 <h2>Step 3: Using Beautiful Soup, Generate a List of Sub-URLs<a class="headerlink" href="#step-3-using-beautiful-soup-generate-a-list-of-sub-urls" title="Permalink to this heading">#</a></h2>
+<p>Beautiful Soup is a commonly used Python library for scraping web sites. This step takes a domain and follows links to identify other sub-domain websites. Uncomment the “Test: Print URLs” to make sure it works the first time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -598,8 +605,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-4-using-a-langchain-url-loader-read-in-contents-from-all-listed-urls">
-<h2>Step 4: Using a Langchain URL Loader, Read in Contents from All Listed URLs<a class="headerlink" href="#step-4-using-a-langchain-url-loader-read-in-contents-from-all-listed-urls" title="Permalink to this heading">#</a></h2>
+<section id="step-4-read-in-contents-from-all-listed-urls">
+<h2>Step 4: Read in Contents from All Listed URLs<a class="headerlink" href="#step-4-read-in-contents-from-all-listed-urls" title="Permalink to this heading">#</a></h2>
+<p>Langchain is a Language Learning Model library that is commonly used to support interactions between generative AI and existing datasets – text, .csv files, .pdf files, .json’s, and so many more. In this step, we use the Selenium URL loader to read in the contents of each of the URLs retreived in the previous step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## READ IN URL CONTENTS FOR USE WITH LANGCHAIN ##</span>
@@ -611,8 +619,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-5-use-a-langchain-text-splitter-charactertextsplitter-to-break-contents-into-chunks">
-<h2>Step 5: Use a Langchain Text Splitter (CharacterTextSplitter) to Break Contents into “Chunks”<a class="headerlink" href="#step-5-use-a-langchain-text-splitter-charactertextsplitter-to-break-contents-into-chunks" title="Permalink to this heading">#</a></h2>
+<section id="step-5-break-contents-into-chunks">
+<h2>Step 5:Break Contents into “Chunks”<a class="headerlink" href="#step-5-break-contents-into-chunks" title="Permalink to this heading">#</a></h2>
+<p>In this step, we use a Langchain Text Splitter (CharacterTextSplitter) to break the website content into encoded chunks, or tokens.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## SPLIT URL CONTENTS INTO CHUNKS ##</span>
@@ -624,8 +633,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-6-use-openai-embeddings-and-faiss-vectorstore-tool-to-um-vectorize-the-data-to-make-search-more-efficient">
-<h2>Step 6: Use OpenAI Embeddings and FAISS Vectorstore Tool to, um, Vectorize the Data to Make Search More Efficient<a class="headerlink" href="#step-6-use-openai-embeddings-and-faiss-vectorstore-tool-to-um-vectorize-the-data-to-make-search-more-efficient" title="Permalink to this heading">#</a></h2>
+<section id="step-6-vectorize-the-data">
+<h2>Step 6: Vectorize the Data<a class="headerlink" href="#step-6-vectorize-the-data" title="Permalink to this heading">#</a></h2>
+<p>In this step, we use OpenAI Embeddings and FAISS Vectorstore Tool to make searching our data more efficient. The easiest way to think about this step is to imagine we have a .csv file. Each vector would be one row of the .csv. Then, in a later step, if we make a query that includes a reference in one of the rows, only that row of information (vector) would then be passed on to the OpenAI API for a natural language response. This prevents us from having to send entire datasets through the API.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## VECTORIZE THE CHUNKS FOR EFFICIENT SEARCH ##</span>
@@ -637,8 +647,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-7-save-vectore-store-so-you-can-go-back-to-it-later">
-<h2>Step 7: Save Vectore Store, So You Can Go Back to it Later<a class="headerlink" href="#step-7-save-vectore-store-so-you-can-go-back-to-it-later" title="Permalink to this heading">#</a></h2>
+<section id="step-7-save-vector-store">
+<h2>Step 7: Save Vector Store<a class="headerlink" href="#step-7-save-vector-store" title="Permalink to this heading">#</a></h2>
+<p>Now, we will save the vectorized data (Vector Store), so we can go back to it anytime.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## SAVE EMBEDDINGS LOCALLY, SO YOU DO NOT HAVE TO REGENRATE ALL THE TIME ##</span>
@@ -652,7 +663,7 @@ title="Print to PDF"
 </section>
 <section id="step-8-test-embeddings-and-set-up-and-test-retreiver">
 <h2>Step 8: Test Embeddings and Set Up and Test Retreiver<a class="headerlink" href="#step-8-test-embeddings-and-set-up-and-test-retreiver" title="Permalink to this heading">#</a></h2>
-<p>The Retreiver will use the vectore store to idenitfy those, um, vectors that have the most relevant information based on the user query. Only these vectors will be sent to the ChatGPT API for processing.</p>
+<p>The Retreiver will search the vector store to idenitfy those vectors that have the most relevant information based on the user query. Only these vectors will be retreived and sent to the ChatGPT API for processing. The code below includes a couple tests that are recommended the first time you run this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TEST EMBEDDINGS ##</span>
@@ -670,8 +681,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-9-set-up-query-chain-using-langchain-retrievalqawithsourceschain-chatopenai-it-s-good-and-your-retreiver">
-<h2>Step 9: Set Up Query Chain using Langchain RetrievalQAWithSourcesChain, ChatOpenAI (it’s good!), and Your Retreiver<a class="headerlink" href="#step-9-set-up-query-chain-using-langchain-retrievalqawithsourceschain-chatopenai-it-s-good-and-your-retreiver" title="Permalink to this heading">#</a></h2>
+<section id="step-9-set-up-query-chain">
+<h2>Step 9: Set Up Query Chain<a class="headerlink" href="#step-9-set-up-query-chain" title="Permalink to this heading">#</a></h2>
+<p>Now, using Langchain RetrievalQAWithSourcesChain, ChatOpenAI (it’s good!), and your Retreiver, we are ready to go! The following code takes a query, finds the relevant data in your vector store, and then sends that data as part of a prompt to the ChatGPT API.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## SET UP QUERY CHAIN. FIRST RETREIVE VECTORS FROM DATABASE. THEN SEND TO OPENAI FOR GENERATING RESPONSE ##</span>
@@ -692,8 +704,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-10-big-time-ask-your-data-good-a-question">
-<h2>Step 10: Big Time! Ask Your Data Good a Question!<a class="headerlink" href="#step-10-big-time-ask-your-data-good-a-question" title="Permalink to this heading">#</a></h2>
+<section id="step-10-big-time-ask-your-content-a-question">
+<h2>Step 10: Big Time! Ask Your Content a Question!<a class="headerlink" href="#step-10-big-time-ask-your-content-a-question" title="Permalink to this heading">#</a></h2>
+<p>Now we can write a question for our Data Good (or other fed-in url content!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## ASK A QUESTION! ##</span>
@@ -707,7 +720,7 @@ title="Print to PDF"
 </section>
 <section id="step-11-run-a-query-and-make-the-response-pretty">
 <h2>Step 11: Run a Query and Make the Response Pretty<a class="headerlink" href="#step-11-run-a-query-and-make-the-response-pretty" title="Permalink to this heading">#</a></h2>
-<p>Warning! Even with all this splitting, vectorizing, and retreiving, sometimes we still exceed the paltry ChatGPT token limits. To solve, make your question more specific to reduce the number of retreived materials, or increase the “score_treshold” in your query chain.</p>
+<p>Warning! Even with all this splitting, vectorizing, and retreiving, sometimes we still exceed the paltry ChatGPT token limits. To solve, make your question more specific to reduce the number of retreived materials, or increase the “score_treshold” in your query chain. In the response, below, note that we also include the sources – important and exciting!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## RUN QUERY AND MAKE RESPONSE PRETTY ##</span>
@@ -728,6 +741,11 @@ title="Print to PDF"
 </div>
 </div>
 </section>
+<section id="final-notes">
+<h2>Final Notes<a class="headerlink" href="#final-notes" title="Permalink to this heading">#</a></h2>
+<p>I am a novice! I have never written an application like this before! My explanations and code are based on what I have taught myself in the past couple months, so if you see areas for improvement, or, more importantly, things that are just completely wrong, please submit an issue on this repo, so I can learn and fix &lt;3</p>
+<p>After preparing this and other notebooks, I have come to see generative AI as a Matrix-style superpower, enabling me to do much more, much faster, than I could have ever dreamed of. Maybe this is dangerous! Maybe this is the first step to reaching the next galaxy (because to do that, we can’t just so what we are doing now…).</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -739,16 +757,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "venv"
+            mode: "python"
         },
         kernelOptions: {
-            name: "venv",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'venv'</script>
+    <script>kernelName = 'python3'</script>
 
             </article>
             
@@ -787,8 +805,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-select-a-wb-data-lab-data-good-url">
-   Step 2: Select a WB Data Lab Data Good URL
+  <a class="reference internal nav-link" href="#step-2-select-a-world-bank-data-lab-data-good-url">
+   Step 2: Select a World Bank Data Lab Data Good URL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -797,23 +815,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-using-a-langchain-url-loader-read-in-contents-from-all-listed-urls">
-   Step 4: Using a Langchain URL Loader, Read in Contents from All Listed URLs
+  <a class="reference internal nav-link" href="#step-4-read-in-contents-from-all-listed-urls">
+   Step 4: Read in Contents from All Listed URLs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-use-a-langchain-text-splitter-charactertextsplitter-to-break-contents-into-chunks">
-   Step 5: Use a Langchain Text Splitter (CharacterTextSplitter) to Break Contents into “Chunks”
+  <a class="reference internal nav-link" href="#step-5-break-contents-into-chunks">
+   Step 5:Break Contents into “Chunks”
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-6-use-openai-embeddings-and-faiss-vectorstore-tool-to-um-vectorize-the-data-to-make-search-more-efficient">
-   Step 6: Use OpenAI Embeddings and FAISS Vectorstore Tool to, um, Vectorize the Data to Make Search More Efficient
+  <a class="reference internal nav-link" href="#step-6-vectorize-the-data">
+   Step 6: Vectorize the Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-7-save-vectore-store-so-you-can-go-back-to-it-later">
-   Step 7: Save Vectore Store, So You Can Go Back to it Later
+  <a class="reference internal nav-link" href="#step-7-save-vector-store">
+   Step 7: Save Vector Store
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -822,18 +840,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-9-set-up-query-chain-using-langchain-retrievalqawithsourceschain-chatopenai-it-s-good-and-your-retreiver">
-   Step 9: Set Up Query Chain using Langchain RetrievalQAWithSourcesChain, ChatOpenAI (it’s good!), and Your Retreiver
+  <a class="reference internal nav-link" href="#step-9-set-up-query-chain">
+   Step 9: Set Up Query Chain
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-10-big-time-ask-your-data-good-a-question">
-   Step 10: Big Time! Ask Your Data Good a Question!
+  <a class="reference internal nav-link" href="#step-10-big-time-ask-your-content-a-question">
+   Step 10: Big Time! Ask Your Content a Question!
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-11-run-a-query-and-make-the-response-pretty">
    Step 11: Run a Query and Make the Response Pretty
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-notes">
+   Final Notes
   </a>
  </li>
 </ul>
@@ -864,7 +887,7 @@ By World Bank
   
   <div class="footer-item">
     <p class="last-updated">
-Last updated on May 18, 2023.<br>
+Last updated on May 24, 2023.<br>
 </p>
   </div>
   
